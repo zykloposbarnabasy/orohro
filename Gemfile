@@ -56,3 +56,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails_admin', '~> 2.0'
+
+gem 'react-rails', '~> 2.6.0'
