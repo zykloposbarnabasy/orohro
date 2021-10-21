@@ -14,7 +14,8 @@
     "react_ujs": "^2.6.1",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "zustand": "^3.5.14"
   },
   "version": "0.1.0",
   "devDependencies": {
