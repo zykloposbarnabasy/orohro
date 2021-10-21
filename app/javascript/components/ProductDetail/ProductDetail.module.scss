@@ -1,0 +1,78 @@
+:local {
+  .stars {
+    display: inline-block;
+    width: 170px;
+    height: 36px;
+    background-color: palegreen;
+  }
+
+  .ratingStar {
+    height: 32px;
+  }
+
+  .topContent {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 41px;
+    padding-right: 13px;
+  }
+
+  .reviewRow {
+    span {
+      display: inline-block;
+      vertical-align: top;
+      padding-top: 7px;
+      padding-left: 21px;
+      color: #777;
+      overflow-x: hidden;
+      white-space: nowrap;
+      max-width: 836px;
+      text-overflow: ellipsis;
+      b {
+        color: black;
+      }
+    }
+  }
+
+  .averageRating {
+    span {
+      display: inline-block;
+      width: 90px;
+      vertical-align: top;
+      font-size: 36px;
+    }
+    .stars {
+      padding-top: 3px;
+    }
+  }
+
+  hr {
+    margin: 50px 13px;
+    color: #eee;
+  }
+
+  .reviews {
+    span {
+      color: #777;
+    }
+  }
+
+  .ratingModal {
+    .stars {
+      transform: translateX(-10px);
+    }
+    textarea {
+      border: none;
+      resize: none;
+      outline: none;
+      width: 100%;
+    }
+    .error {
+      visibility: hidden;
+      font-size: smaller;
+      font-weight: bold;
+      color: crimson;
+      transform: translateY(-9px);
+    }
+  }
+}
