@@ -36,7 +36,6 @@ class StarRating {
       width -= ZERO_AREA_PADDING_PX
     }
 
-    const y = e.offsetY
     return idx + (x >= width / 2 ? 1 : 0.5)
   }
 
@@ -95,7 +94,7 @@ class StarRating {
       !this.state.readonly && this.state.hoverScore !== undefined
         ? this.state.hoverScore
         : this.state.score
-    let fullStars = Math.max(Math.trunc(Math.min(score, this.state.maxScore)), 0)
+    const fullStars = Math.max(Math.trunc(Math.min(score, this.state.maxScore)), 0)
     const hasHalfStar = !!(score % 1) && score < this.state.maxScore
     const stars = this.state.container.children
 
