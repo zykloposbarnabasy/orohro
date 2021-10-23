@@ -102,7 +102,7 @@ Star.defaultProps = {
   setHoverScore: undefined,
 }
 
-function StarRating({score, maxScore, readonly, callback}) {
+function StarRating({score, maxScore, readonly, callback, className}) {
   const [hoverScore, setHoverScore] = useState()
 
   const displayScore = !readonly && hoverScore !== undefined ? hoverScore : score
@@ -125,7 +125,7 @@ function StarRating({score, maxScore, readonly, callback}) {
   }
 
   return (
-    <div className={styles.starContainer}>
+    <div className={classNames(styles.starContainer, className)}>
       {stars.map((star, i) => (
         <React.Fragment key={i}>{star}</React.Fragment>
       ))}
@@ -138,6 +138,7 @@ StarRating.propTypes = {
   maxScore: PropTypes.number,
   readonly: PropTypes.bool,
   callback: PropTypes.func,
+  className: PropTypes.string,
 }
 
 StarRating.defaultProps = {
@@ -145,6 +146,7 @@ StarRating.defaultProps = {
   maxScore: 5,
   readonly: false,
   callback: undefined,
+  className: undefined,
 }
 
 export default StarRating
