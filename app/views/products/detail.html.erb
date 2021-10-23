@@ -37,7 +37,7 @@
 
 <hr />
 
-<%= react_component 'ProductDetail', { slug: params[:slug], formAuthenticityToken: form_authenticity_token } %>
+<%= react_component 'ProductDetail', { productId: @product.id, slug: params[:slug], formAuthenticityToken: form_authenticity_token } %>
 
 <template id="starSvg">
     <svg class="rating-star" enable-background="new 0 0 53.867 53.867" version="1.1" viewBox="0 0 53.867 53.867" xml:space="preserve"

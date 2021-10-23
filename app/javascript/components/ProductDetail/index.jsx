@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react'
 import {PropTypes} from 'prop-types'
 
+import {createConsumer} from '@rails/actioncable'
 import create from 'zustand'
 
 import Popup from 'reactjs-popup'
@@ -16,6 +17,13 @@ const useStore = create((set, get) => ({
   title: undefined,
   averageScore: undefined,
   reviews: [],
+  updateProduct: (p) => {
+    set({
+      title: p.title,
+      averageScore: Number(p.average_score),
+      reviews: p.reviews,
+    })
+  },
   fetchProduct: async (slug) => {
     const res = await fetch(`/api/products/${slug}`, {
       headers: {
@@ -23,19 +31,16 @@ const useStore = create((set, get) => ({
       },
     })
     const p = await res.json()
-    set({
-      title: p.title,
-      averageScore: Number(p.average_score),
-      reviews: p.reviews,
-    })
+    get().updateProduct(p)
   },
 }))
 
 const selectors = {
-  fetchProduct: (state) => state.fetchProduct,
   title: (state) => state.title,
   averageScore: (state) => state.averageScore,
   reviews: (state) => state.reviews,
+  updateProduct: (state) => state.updateProduct,
+  fetchProduct: (state) => state.fetchProduct,
 }
 
 const popupContentStyle = {
@@ -47,11 +52,12 @@ const popupContentStyle = {
   padding: '3rem',
 }
 
-function ProductDetail({slug, formAuthenticityToken}) {
+function ProductDetail({productId, slug, formAuthenticityToken}) {
   const fetchProduct = useStore(selectors.fetchProduct)
   const title = useStore(selectors.title)
   const averageScore = useStore(selectors.averageScore)
   const reviews = useStore(selectors.reviews)
+  const updateProduct = useStore(selectors.updateProduct)
 
   const [reviewScore, setReviewScore] = useState()
   const [scoreError, setScoreError] = useState(false)
@@ -61,6 +67,15 @@ function ProductDetail({slug, formAuthenticityToken}) {
 
   useEffect(() => {
     fetchProduct(slug)
+
+    createConsumer().subscriptions.create(
+      {channel: 'ProductsChannel', product_id: productId},
+      {
+        received: (product) => {
+          updateProduct(product)
+        },
+      }
+    )
   }, [])
 
   const changeScore = useCallback(
@@ -167,6 +182,7 @@ function ProductDetail({slug, formAuthenticityToken}) {
 }
 
 ProductDetail.propTypes = {
+  productId: PropTypes.number.isRequired,
   slug: PropTypes.string.isRequired,
   formAuthenticityToken: PropTypes.string.isRequired,
 }

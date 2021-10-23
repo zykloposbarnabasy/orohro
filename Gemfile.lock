@@ -197,6 +197,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    redis (4.5.1)
     regexp_parser (2.1.1)
     remotipart (1.4.4)
     rexml (3.2.5)
@@ -268,6 +269,7 @@ DEPENDENCIES
   rails (~> 6.1.4, >= 6.1.4.1)
   rails_admin (~> 2.0)
   react-rails (~> 2.6.0)
+  redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver
   spring
