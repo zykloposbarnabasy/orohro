@@ -9,7 +9,6 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import '../../assets/stylesheets/application.css'
-import '../../assets/stylesheets/products.scss'
 
 Rails.start()
 Turbolinks.start()
