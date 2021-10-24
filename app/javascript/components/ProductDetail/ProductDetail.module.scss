@@ -19,7 +19,7 @@
       color: #777;
       overflow-x: hidden;
       white-space: nowrap;
-      max-width: 836px;
+      max-width: calc(100% - 204px);
       text-overflow: ellipsis;
       b {
         color: black;
