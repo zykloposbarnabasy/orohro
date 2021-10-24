@@ -1,6 +1,15 @@
 {
   "name": "orohro",
   "private": true,
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "jest": {
+    "roots": [
+      "test/javascript"
+    ]
+  },
   "dependencies": {
     "@babel/preset-react": "^7.14.5",
     "@rails/actioncable": "^6.0.0",
@@ -21,6 +30,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "jest": "^27.3.1",
     "webpack-dev-server": "^3"
   }
 }

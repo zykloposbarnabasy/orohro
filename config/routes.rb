@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'products/detail'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/products/:slug', to: 'products#detail'
-  post '/products/submitReview', to: 'products#submit_review'
+  post '/products/submitReview', to: 'products#submit_review', as: 'submit_review'
 
   namespace :api do
     resources :products, param: :slug, only: [:show], defaults: { format: :json }
