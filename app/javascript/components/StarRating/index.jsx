@@ -4,7 +4,7 @@ import {PropTypes} from 'prop-types'
 import classNames from 'classnames'
 import styles from './StarRating.module.scss'
 
-const STAR_VALUE = {
+export const STAR_VALUE = {
   EMPTY: 'star-empty',
   HALF: 'star-half',
   FULL: 'star-full',
